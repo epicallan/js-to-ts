@@ -2,7 +2,7 @@
 
 # Javascript to Typescript file convert
 
-Relies on [lebab](https://github.com/lebab/lebab) for es5 to es6 conversion
+Heavily relying on [lebab](https://github.com/lebab/lebab) for es5 to es6 conversion
 
 ## What it does
 
@@ -10,7 +10,7 @@ Relies on [lebab](https://github.com/lebab/lebab) for es5 to es6 conversion
 
 - convert es5 to es6 code
 - Renames files in a directory to .ts
-
+- delete left over js files by commandline see commands usage below
 
 ## Commands / usage
 
