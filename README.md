@@ -18,7 +18,7 @@ Heavily relying on [lebab](https://github.com/lebab/lebab) for es5 to es6 conver
 install by using yarn or npm
 
 ```
- npm install @epicallan/js-to-ts
+ npm install -g @epicallan/js-to-ts
 ```
 
 run `js-to-ts --dir <relativePath>` to convert files in a specific dir
