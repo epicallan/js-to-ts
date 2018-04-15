@@ -1,6 +1,6 @@
 {
   "name": "js-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "simple graphql framework @devinit",
   "main": "dist/main.js",
   "scripts": {
