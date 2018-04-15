@@ -1,5 +1,5 @@
 {
-  "name": "js-to-ts",
+  "name": "js-ts",
   "version": "1.0.0",
   "description": "simple graphql framework @devinit",
   "main": "dist/main.js",
@@ -8,7 +8,7 @@
     "patch": "release-it -i patch -n",
     "feature": "release-it -i minor -n",
     "breaking": "release-it -i major -n",
-    "start": "ts-node src/main.ts -c --dir src",
+    "start": "ts-node src/main.ts --dir examples",
     "build": "tsc"
   },
   "author": "epicallan.al@gmail.com",
@@ -16,9 +16,15 @@
   "publishConfig": {
     "access": "public"
   },
+  "keywords": [
+    "js to ts",
+    "javascript to typescript",
+    "js-to-ts",
+    "js-ts"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/epicallan/js-to-ts.git"
+    "url": "https://github.com/epicallan/js-ts.git"
   },
   "peerDependencies": {
     "graphql": ">= 0.10.0 < 0.12.0"

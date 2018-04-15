@@ -3,7 +3,7 @@
  * make some transformations on the files eg convert vars to const
  */
 import {resolve} from 'path';
-import {replace, pipe, match} from 'ramda';
+import {replace, match} from 'ramda';
 import * as lebab from 'lebab';
 import * as yargs from 'yargs';
 import {readdir, readFile, writeFile, unlink } from 'fs-extra';
@@ -23,13 +23,8 @@ const allJsFilesInDir = async (dir: string): Promise<string[]> =>
 export const newTsPath = (jsPath: string) =>
     jsPath.replace(/\.js$/, '.ts');
 
-export const transformFile = (content: string) => {
-    const transform = pipe(
-              replace(/var/g, 'const') // first action
-            , replace(/\n^exports\./gm, 'export const ')
-            , replace(/exports\./gm, '')
-        );
-    return transform(content);
+export const extraTransforms = (content: string) => {
+    return replace(/exports\./gm, '', (content));
 };
 
 export const convertToTs = async (relativeDir?: string) => {
@@ -43,7 +38,7 @@ export const convertToTs = async (relativeDir?: string) => {
             console.log('\n ** warnings ***', warnings, '*** \n');
             const tsPath = newTsPath(jsFullPath);
             // unlink(jsFullPath)
-            await writeFile(tsPath, code);
+            await writeFile(tsPath, extraTransforms(code));
             // await Promise.all([]);
         });
 };
@@ -58,8 +53,8 @@ export const cleanup =  async (dir: string = currentDir) => {
 };
 const main = async () => {
     try {
-        if (yargs.argv.delete && yargs.argv.dir) return cleanup(yargs.argv.dir);
-        if (yargs.argv.delete) return cleanup();
+        if (yargs.argv.d && yargs.argv.dir) return cleanup(yargs.argv.dir);
+        if (yargs.argv.d) return cleanup();
         if (yargs.argv.dir) return convertToTs(yargs.argv.dir);
         return convertToTs();
      } catch (err) {
@@ -68,6 +63,5 @@ const main = async () => {
 };
 
 if (require.main === module && process.env.NODE_ENV !== 'test') {
-    console.log(yargs.argv);
     main();
 }

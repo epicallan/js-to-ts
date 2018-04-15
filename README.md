@@ -1,15 +1,15 @@
 # Javascript to Typescript file convert
 
-This is a simple wrapper around [lebab](https://github.com/lebab/lebab) for js to ts file refactoring
+Relies on [lebab](https://github.com/lebab/lebab) for es5 to es6 conversion
 
-What it does
+## What it does
 
 -----
 
-- Renames files in a directory to .ts
 - convert es5 to es6 code
+- Renames files in a directory to .ts
 
-commands
+## commands / usage
 
 ----
 
@@ -17,6 +17,6 @@ run `js-to-ts --dir <relativePath>` to convert files in a specific dir
 
 run `js-to-ts ` to convert files in current dir
 
-run `js-to-ts -delete` to delete all js files in current dir
+run `js-to-ts -d` to delete all js files in current dir
 
-run `js-to-ts -delete --dir <relativePath>` to delete all js files in relative dir
+run `js-to-ts -d --dir <relativePath>` to delete all js files in relative dir
