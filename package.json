@@ -2,16 +2,13 @@
   "name": "js-to-ts",
   "version": "1.0.0",
   "description": "simple graphql framework @devinit",
-  "main": "lib/index.js",
+  "main": "dist/main.js",
   "scripts": {
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "patch": "release-it -i patch -n",
     "feature": "release-it -i minor -n",
     "breaking": "release-it -i major -n",
     "build": "tsc"
-  },
-  "bin": {
-    "gqlToTs": "cli.js"
   },
   "author": "epicallan.al@gmail.com",
   "license": "ISC",
@@ -39,6 +36,7 @@
     "tslint": "5.9.1",
     "typescript": "2.7.2"
   },
+  "bin": "dist/main.js",
   "git-pre-hooks": {
     "pre-push": [
       "npm run lint",
