@@ -5,6 +5,7 @@
 import {resolve} from 'path';
 import {replace, pipe, match} from 'ramda';
 import * as lebab from 'lebab';
+import * as yargs from 'yargs';
 import {readdir, readFile, writeFile, unlink } from 'fs-extra';
 
 const currentDir = process.cwd();
@@ -15,8 +16,9 @@ const codeTransforms =
         'no-strict', 'multi-var'
     ];
 
-const allFileInDir = async (): Promise<string[]> =>
-    readdir(currentDir);
+const allJsFilesInDir = async (dir: string): Promise<string[]> =>
+    (await readdir(dir))
+    .filter(fileName => match(/\.js$/, fileName).length);
 
 export const newTsPath = (jsPath: string) =>
     jsPath.replace(/\.js$/, '.ts');
@@ -30,26 +32,42 @@ export const transformFile = (content: string) => {
     return transform(content);
 };
 
-export const convertToTs = async () => {
-    const allFiles = await allFileInDir();
+export const convertToTs = async (relativeDir?: string) => {
+    const dir = relativeDir ? resolve(currentDir, relativeDir) : currentDir;
+    const allFiles = await allJsFilesInDir(dir);
     allFiles
-        .filter(fileName => match(/\.js$/, fileName).length)
         .forEach(async (fileName) => {
-            const jsFullPath = resolve(currentDir, fileName);
+            const jsFullPath = resolve(dir, fileName);
             const content = await readFile(jsFullPath, 'utf8');
             const {code, warnings} = lebab.transform(content, codeTransforms);
             console.log('\n ** warnings ***', warnings, '*** \n');
-            // const newContent = transformFile(content);
             const tsPath = newTsPath(jsFullPath);
             // unlink(jsFullPath)
-            await Promise.all([writeFile(tsPath, code)]);
+            await writeFile(tsPath, code);
+            // await Promise.all([]);
         });
 };
 
-if (require.main === module && process.env.NODE_ENV !== 'test') {
+export const cleanup =  async (dir: string = currentDir) => {
+    const allFiles = await allJsFilesInDir(dir);
+    allFiles
+        .forEach(async (fileName) => {
+            const jsFullPath = resolve(dir, fileName);
+            unlink(jsFullPath);
+        });
+};
+const main = async () => {
     try {
-       main();
-    } catch (err) {
-        console.error(err);
-    }
+        if (yargs.argv.delete && yargs.argv.dir) return cleanup(yargs.argv.dir);
+        if (yargs.argv.delete) return cleanup();
+        if (yargs.argv.dir) return convertToTs(yargs.argv.dir);
+        return convertToTs();
+     } catch (err) {
+         console.error(err);
+     }
+};
+
+if (require.main === module && process.env.NODE_ENV !== 'test') {
+    console.log(yargs.argv);
+    main();
 }
