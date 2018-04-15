@@ -1,6 +1,6 @@
 {
   "name": "@epicallan/js-to-ts",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "simple graphql framework @devinit",
   "main": "dist/main.js",
   "publish": {
@@ -49,7 +49,9 @@
     "typescript": "2.7.2",
     "yargs": "^11.0.0"
   },
-  "bin": {"js-to-ts": "index.js"},
+  "bin": {
+    "js-to-ts": "index.js"
+  },
   "git-pre-hooks": {
     "pre-push": [
       "npm run lint",
