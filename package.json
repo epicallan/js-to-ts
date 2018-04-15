@@ -35,7 +35,8 @@
   "dependencies": {
     "fs-extra": "5.0.0",
     "lebab": "^2.7.7",
-    "ramda": "0.25.0"
+    "ramda": "0.25.0",
+    "yargs": "^11.0.0"
   },
   "devDependencies": {
     "@types/fs-extra": "5.0.1",
@@ -46,8 +47,7 @@
     "release-it": "7.2.1",
     "ts-node": "^5.0.1",
     "tslint": "5.9.1",
-    "typescript": "2.7.2",
-    "yargs": "^11.0.0"
+    "typescript": "2.7.2"
   },
   "bin": {
     "js-to-ts": "index.js"
