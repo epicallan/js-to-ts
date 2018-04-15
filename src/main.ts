@@ -37,9 +37,7 @@ export const convertToTs = async (relativeDir?: string) => {
             const {code, warnings} = lebab.transform(content, codeTransforms);
             console.log('\n ** warnings ***', warnings, '*** \n');
             const tsPath = newTsPath(jsFullPath);
-            // unlink(jsFullPath)
             await writeFile(tsPath, extraTransforms(code));
-            // await Promise.all([]);
         });
 };
 
