@@ -13,7 +13,7 @@ Relies on [lebab](https://github.com/lebab/lebab) for es5 to es6 conversion
 
 ## commands / usage
 
-----
+-----
 
 run `js-to-ts --dir <relativePath>` to convert files in a specific dir
 
