@@ -11,7 +11,8 @@ Relies on [lebab](https://github.com/lebab/lebab) for es5 to es6 conversion
 - convert es5 to es6 code
 - Renames files in a directory to .ts
 
-## commands / usage
+
+## Commands / usage
 
 -----
 
