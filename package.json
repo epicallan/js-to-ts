@@ -1,6 +1,6 @@
 {
   "name": "@epicallan/js-to-ts",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "simple graphql framework @devinit",
   "main": "dist/main.js",
   "publish": {
