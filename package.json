@@ -1,9 +1,11 @@
 {
   "name": "@epicallan/js-ts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "simple graphql framework @devinit",
   "main": "dist/main.js",
-  "publish": {"public": true},
+  "publish": {
+    "public": true
+  },
   "scripts": {
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "patch": "release-it -i patch -n",
