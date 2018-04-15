@@ -8,6 +8,7 @@
     "patch": "release-it -i patch -n",
     "feature": "release-it -i minor -n",
     "breaking": "release-it -i major -n",
+    "start": "ts-node src/main.ts",
     "build": "tsc"
   },
   "author": "epicallan.al@gmail.com",
@@ -24,6 +25,7 @@
   },
   "dependencies": {
     "fs-extra": "5.0.0",
+    "lebab": "^2.7.7",
     "ramda": "0.25.0"
   },
   "devDependencies": {
