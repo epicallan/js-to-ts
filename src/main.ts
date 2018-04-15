@@ -29,6 +29,7 @@ export const extraTransforms = (content: string) => {
 
 export const convertToTs = async (relativeDir?: string) => {
     const dir = relativeDir ? resolve(currentDir, relativeDir) : currentDir;
+    console.info('converting files in ', dir);
     const allFiles = await allJsFilesInDir(dir);
     allFiles
         .forEach(async (fileName) => {
@@ -41,7 +42,9 @@ export const convertToTs = async (relativeDir?: string) => {
         });
 };
 
-export const cleanup =  async (dir: string = currentDir) => {
+export const cleanup =  async (relativeDir: string = currentDir) => {
+    const dir = relativeDir ? resolve(currentDir, relativeDir) : currentDir;
+    console.info('deleting files in ', dir);
     const allFiles = await allJsFilesInDir(dir);
     allFiles
         .forEach(async (fileName) => {
@@ -49,8 +52,10 @@ export const cleanup =  async (dir: string = currentDir) => {
             unlink(jsFullPath);
         });
 };
+
 const main = async () => {
     try {
+        console.log(yargs.argv);
         if (yargs.argv.d && yargs.argv.dir) return cleanup(yargs.argv.dir);
         if (yargs.argv.d) return cleanup();
         if (yargs.argv.dir) return convertToTs(yargs.argv.dir);
@@ -60,6 +65,6 @@ const main = async () => {
      }
 };
 
-if (require.main === module && process.env.NODE_ENV !== 'test') {
+if (process.env.NODE_ENV !== 'test') {
     main();
 }
