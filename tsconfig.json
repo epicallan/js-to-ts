@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "target": "es5",
+      "sourceMap": false,
+      "strict": true,
+      "lib": ["es2017", "esnext.asynciterable", "dom"],
+      "experimentalDecorators": true,
+      "typeRoots": ["node_modules/@types", "types"],
+      "declaration": true,
+      "noImplicitAny": false,
+      "noUnusedLocals": true,
+      "outDir": "dist",
+      "removeComments": true
+    },
+    "exclude": [
+      "node_modules",
+      "dist"
+    ],
+    "include": [
+        "src"
+    ]
+  }
