@@ -55,7 +55,6 @@ export const cleanup =  async (relativeDir: string = currentDir) => {
 
 const main = async () => {
     try {
-        console.log(yargs.argv);
         if (yargs.argv.d && yargs.argv.dir) return cleanup(yargs.argv.dir);
         if (yargs.argv.d) return cleanup();
         if (yargs.argv.dir) return convertToTs(yargs.argv.dir);
