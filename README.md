@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/%40epicallan%2Fjs-to-ts.svg)](https://badge.fury.io/js/%40epicallan%2Fjs-to-ts)
+
 # Javascript to Typescript file convert
 
 Relies on [lebab](https://github.com/lebab/lebab) for es5 to es6 conversion
