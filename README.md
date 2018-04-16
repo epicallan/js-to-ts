@@ -21,10 +21,10 @@ install by using yarn or npm
  npm install -g @epicallan/js-to-ts
 ```
 
-run `js-to-ts --dir <relativePath>` to convert files in a specific dir
+`$ js-to-ts --dir <relativePath>` to convert files in a specific dir
 
-run `js-to-ts ` to convert files in current dir
+`$ js-to-ts ` to convert files in current dir
 
-run `js-to-ts -d` to delete all js files in current dir
+`$ js-to-ts -d` to delete all js files in current dir
 
-run `js-to-ts -d --dir <relativePath>` to delete all js files in relative dir
+`$ js-to-ts -d --dir <relativePath>` to delete all js files in relative dir
