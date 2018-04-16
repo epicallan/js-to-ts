@@ -11,8 +11,8 @@ import {readdir, readFile, writeFile, unlink } from 'fs-extra';
 const currentDir = process.cwd();
 
 const codeTransforms =
-    [   'let', 'arrow', 'for-of', 'commonjs', 'template',
-        'destruct-param', 'includes', 'for-each', 'obj-shorthand',
+    [   'let', 'arrow', 'commonjs', 'template',
+        'destruct-param', 'includes', 'obj-shorthand',
         'no-strict', 'multi-var'
     ];
 
